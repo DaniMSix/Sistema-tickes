@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistematickets.vistas.FXMLDetallesReporteController">
+   <children>
+      <Label layoutX="205.0" layoutY="14.0" text="Detalles del Reporte">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="23.0" layoutY="90.0" text="Título" />
+      <Label layoutX="295.0" layoutY="106.0" text="Descripcion" />
+      <Label layoutX="295.0" layoutY="208.0" text="Solucion" />
+      <Label layoutX="23.0" layoutY="171.0" text="Estado" />
+      <Label layoutX="23.0" layoutY="131.0" text="Fecha de creacion" />
+      <TextField fx:id="tfTitulo" layoutX="123.0" layoutY="86.0" prefWidth="150.0" />
+      <TextField fx:id="tfFechaCreacion" layoutX="123.0" layoutY="127.0" prefWidth="150.0" />
+      <Label layoutX="23.0" layoutY="209.0" text="Modulo" />
+      <Label layoutX="23.0" layoutY="249.0" text="Tipo de reporte" />
+      <TextArea fx:id="taDescripcion" layoutX="395.0" layoutY="106.0" prefHeight="87.0" prefWidth="191.0" wrapText="true" />
+      <TextArea fx:id="taSolucion" layoutX="395.0" layoutY="208.0" prefHeight="87.0" prefWidth="191.0" wrapText="true" />
+      <TextField fx:id="tfFechaSolucion" layoutX="123.0" layoutY="289.0" prefWidth="150.0" />
+      <TextField fx:id="tfEstado" layoutX="124.0" layoutY="167.0" />
+      <TextField fx:id="tfModulo" layoutX="124.0" layoutY="205.0" />
+      <TextField fx:id="tfTipoReporte" layoutX="124.0" layoutY="245.0" />
+      <Label layoutX="23.0" layoutY="293.0" text="Fecha de solucion" />
+   </children>
+</AnchorPane>
