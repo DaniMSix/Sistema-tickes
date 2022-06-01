@@ -20,7 +20,7 @@ public class UsuarioDAO {
     public Usuario iniciarSesion(String nombreUsuario, String contrasenia) throws SQLException{
         Usuario usuarioAIdentificar = new Usuario();
         DataBaseConnection dataBase = new DataBaseConnection();
-        String consulta = "SELECT* FROM usuarios WHERE (usuario = ?) AND (contrasenia = ?);";
+        String consulta = "SELECT* FROM usuarios WHERE (usuario = ?) AND (contrasena = ?);";
         try (Connection conexion = dataBase.getConexion()){
             PreparedStatement sentencia = conexion.prepareStatement(consulta);
             sentencia.setString(1, nombreUsuario); 
