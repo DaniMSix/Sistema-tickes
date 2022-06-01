@@ -36,6 +36,7 @@ public class FXMLPrincipalController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
+    
     private void abrirVentana(String titulo, String rutaVentana){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(rutaVentana));
