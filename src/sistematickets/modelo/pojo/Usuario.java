@@ -15,6 +15,16 @@ public class Usuario {
     private String nombreUsuario;
     private String contrasenia;
     private Integer codigoRespuesta;
+    private Integer rol;
+    
+    public Integer getRol() {
+        return rol;
+    }
+
+    public void setRol(Integer rol) {
+        this.rol = rol;
+    }
+    
 
     public Usuario() {
     }

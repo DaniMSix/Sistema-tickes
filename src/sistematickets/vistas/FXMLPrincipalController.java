@@ -17,18 +17,19 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Menu;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sistematickets.modelo.dao.ReporteDAO;
 import sistematickets.modelo.pojo.Reporte;
 import sistematickets.util.Utilidades;
 
-/**
- * FXML Controller class
- *
- * @author Usuario
- */
+
 public class FXMLPrincipalController implements Initializable { 
+
+    @FXML
+    private Menu menuAdmin;
     /**
      * Initializes the controller class.
      */
@@ -37,6 +38,17 @@ public class FXMLPrincipalController implements Initializable {
         // TODO
     }
     
+    public void tipoMenu(int rol){   
+        switch(rol){
+            case 0:
+                menuAdmin.setVisible(false);
+                break;
+            default:
+                    break;
+                
+        }
+    }
+
     private void abrirVentana(String titulo, String rutaVentana){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(rutaVentana));
@@ -44,6 +56,7 @@ public class FXMLPrincipalController implements Initializable {
             Scene escenarioVentana = new Scene(root);
             Stage ventana = new Stage();
             ventana.setResizable(false);
+            //ventana.getIcons().add(new Image("sistematickets/img/directorio.png"));
             ventana.setScene(escenarioVentana);
             ventana.setTitle(titulo);
             ventana.initModality(Modality.APPLICATION_MODAL);

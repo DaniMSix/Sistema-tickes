@@ -7,12 +7,16 @@ package sistematickets.vistas;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import sistematickets.modelo.dao.SolucionDAO;
 import sistematickets.modelo.pojo.Reporte;
 import sistematickets.modelo.pojo.Solucion;
@@ -43,6 +47,8 @@ public class FXMLDetallesReporteController implements Initializable {
     private TextField tfTipoReporte;
     
     private Reporte reporteDetalle;
+    @FXML
+    private TextField tfEncargado;
     /**
      * Initializes the controller class.
      */
@@ -64,6 +70,9 @@ public class FXMLDetallesReporteController implements Initializable {
         tfEstado.setText(reporteDetalle.getEstadoSolucion().toString());
         tfModulo.setText(reporteDetalle.getModulo().toString());
         tfTipoReporte.setText(reporteDetalle.getTipoReporte().toString());
+        
+        
+        //tfEncargado.setText(reporteDetalle.)
         try {
             taSolucion.setText(obtenerSolucionReporte().getDescripcion());
             tfFechaSolucion.setText(obtenerSolucionReporte().getFechaSolucion());
@@ -88,5 +97,16 @@ public class FXMLDetallesReporteController implements Initializable {
         tfFechaCreacion.setEditable(false);
         tfFechaSolucion.setEditable(false);
         tfTitulo.setEditable(false);
+        tfEncargado.setEditable(false);
+    }
+
+    @FXML
+    private void salirVentana(ActionEvent event) {
+        Optional<ButtonType> respuestaDialogo = Utilidades.mostrarAlertas("Salir",
+        "¿Está seguro que desea salir?", Alert.AlertType.CONFIRMATION);
+        if (respuestaDialogo.get() == ButtonType.OK) {
+            Stage escenarioPrincipal = (Stage) tfTipoReporte.getScene().getWindow();
+            escenarioPrincipal.close();
+        }
     }
 }

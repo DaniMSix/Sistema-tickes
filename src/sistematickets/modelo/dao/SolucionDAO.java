@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import sistematickets.modelo.DataBaseConnection;
+import sistematickets.modelo.pojo.Empleado;
 import sistematickets.modelo.pojo.Reporte;
 import sistematickets.modelo.pojo.Solucion;
 
@@ -35,5 +36,23 @@ public class SolucionDAO {
             dataBase.desconectar();
         }
         return solucionReporte;
+    }
+    
+    public Empleado obtenerNombreEncargadoPorId(Solucion solucion)throws SQLException{
+        Empleado empleadoNombre = new Empleado();
+        DataBaseConnection dataBase = new DataBaseConnection();
+        String consulta = "SELECT nombre from empleados, solucion where solucion.IdEmpleado = ?;";
+        try(Connection conexion = dataBase.getConexion()){
+            PreparedStatement sentencia = conexion.prepareStatement(consulta);
+            
+            ResultSet resultadoConsulta = sentencia.executeQuery();
+            if (!resultadoConsulta.next()) {
+            }else{
+                
+            }
+        }finally{
+            dataBase.desconectar();
+        }
+        return empleadoNombre;
     }
 }

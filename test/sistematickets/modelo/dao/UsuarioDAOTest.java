@@ -45,7 +45,7 @@ public class UsuarioDAOTest {
     public void testIniciarSesionExito() {
         System.out.println("iniciarSesion");
         String nombreUsuario = "CeciliaL";
-        String contrasenia = "2R1IHN3F";
+        String contrasenia = "Gato";
         UsuarioDAO usuarioDao = new UsuarioDAO();
         Usuario resultadoEsperado = new Usuario();
         resultadoEsperado.setNombreUsuario("CeciliaL");
@@ -61,10 +61,29 @@ public class UsuarioDAOTest {
     }
     
     @Test
+    public void testIniciarSesionClienteExito() {
+        System.out.println("iniciarSesion");
+        String nombreUsuario = "PatyRomero";
+        String contrasenia = "34BNGKJF";
+        UsuarioDAO usuarioDao = new UsuarioDAO();
+        Usuario resultadoEsperado = new Usuario();
+        resultadoEsperado.setNombreUsuario("PatyRomero");
+        resultadoEsperado.setIdUsuario(4);
+        resultadoEsperado.setCodigoRespuesta(Constantes.CODIGO_OPERACION_CORRECTA);
+        Usuario resultado;
+        try {
+            resultado = usuarioDao.IniciarSesionCliente(nombreUsuario, contrasenia);
+            assertEquals(resultadoEsperado, resultado);
+        } catch (SQLException sQLException) {
+            Logger.getLogger(UsuarioDAOTest.class.getName()).log(Level.SEVERE, null, sQLException);
+        }
+    }
+    
+    @Test
     public void testIniciarSesionError() {
         System.out.println("iniciarSesion");
         String nombreUsuario = "CeciliaL";
-        String contrasenia = "2R1IHNF";
+        String contrasenia = "Gato";
         UsuarioDAO usuarioDao = new UsuarioDAO();
         Usuario resultadoEsperado = new Usuario();
         resultadoEsperado.setNombreUsuario("CeciliaL");
