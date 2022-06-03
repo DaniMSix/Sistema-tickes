@@ -75,18 +75,28 @@ public class FXMLInicioController implements Initializable {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         try {
             Usuario usuarioAIdentificar;
-            usuarioAIdentificar = usuarioDAO.IniciarSesionCliente(username, password);
+            Usuario usuarioAIdentificarCliente;
+            usuarioAIdentificar = usuarioDAO.iniciarSesion(username, password);
+            usuarioAIdentificarCliente = usuarioDAO.iniciarSesionCliente(username, password);
             //CRear dos usuarios usuarioAIdentificar2 = IniciarSesion(username, password)
             //if()
             if(usuarioAIdentificar.getCodigoRespuesta() == Constantes.CODIGO_OPERACION_CORRECTA){
                 Utilidades.mostrarAlerta("Usuario verificado","Bienvenido(a) al sistema",
                 Alert.AlertType.INFORMATION);
                 abrirPantallaPrincipal(usuarioAIdentificar.getRol());
+                
                 //else if
                 // Comprobobar usuarioAIdentificar2 copiar de lo arriba 
                 //abrirPantallaPrincipal(usuarioAIdentificar2.getRol());
                 
-            }else if(usuarioAIdentificar.getCodigoRespuesta() == Constantes.CODIGO_CREDENCIALES_INCORRECTAS){
+                
+            } else if(usuarioAIdentificarCliente.getCodigoRespuesta() == Constantes.CODIGO_OPERACION_CORRECTA){
+                Utilidades.mostrarAlerta("Usuario verificado","Bienvenido(a) al sistema",
+                Alert.AlertType.INFORMATION);
+                abrirPantallaPrincipal(usuarioAIdentificarCliente.getRol());
+                
+            }
+            else if(usuarioAIdentificar.getCodigoRespuesta() == Constantes.CODIGO_CREDENCIALES_INCORRECTAS){
                 Utilidades.mostrarAlerta("Credenciales Incorrectas",
                 "Usuario y/o contraseña incorrectos, favor de verificarlos", Alert.AlertType.WARNING);
                 txtUsuario.setText("");
@@ -131,9 +141,9 @@ public class FXMLInicioController implements Initializable {
 
             
         } catch (IOException iOException) {
-            //Utilidades.mostrarAlerta("Error de sistema 6", "Hubo un error "
-            //+ "al cargar la información. Por favor, inténtelo más tarde",Alert.AlertType.ERROR);
-            Logger.getLogger(FXMLInicioController.class.getName()).log(Level.SEVERE, null, iOException);
+            Utilidades.mostrarAlerta("Error de sistema 6", "Hubo un error "
+            + "al cargar la información. Por favor, inténtelo más tarde",Alert.AlertType.ERROR);
+            //Logger.getLogger(FXMLInicioController.class.getName()).log(Level.SEVERE, null, iOException);
         }
         
     }

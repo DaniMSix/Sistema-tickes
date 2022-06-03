@@ -48,6 +48,8 @@ public class FXMLPrincipalController implements Initializable {
                 
         }
     }
+    
+
 
     private void abrirVentana(String titulo, String rutaVentana){
         try {
