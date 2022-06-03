@@ -21,6 +21,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sistematickets.modelo.dao.UsuarioDAO;
@@ -78,18 +79,10 @@ public class FXMLInicioController implements Initializable {
             Usuario usuarioAIdentificarCliente;
             usuarioAIdentificar = usuarioDAO.iniciarSesion(username, password);
             usuarioAIdentificarCliente = usuarioDAO.iniciarSesionCliente(username, password);
-            //CRear dos usuarios usuarioAIdentificar2 = IniciarSesion(username, password)
-            //if()
             if(usuarioAIdentificar.getCodigoRespuesta() == Constantes.CODIGO_OPERACION_CORRECTA){
                 Utilidades.mostrarAlerta("Usuario verificado","Bienvenido(a) al sistema",
                 Alert.AlertType.INFORMATION);
                 abrirPantallaPrincipal(usuarioAIdentificar.getRol());
-                
-                //else if
-                // Comprobobar usuarioAIdentificar2 copiar de lo arriba 
-                //abrirPantallaPrincipal(usuarioAIdentificar2.getRol());
-                
-                
             } else if(usuarioAIdentificarCliente.getCodigoRespuesta() == Constantes.CODIGO_OPERACION_CORRECTA){
                 Utilidades.mostrarAlerta("Usuario verificado","Bienvenido(a) al sistema",
                 Alert.AlertType.INFORMATION);
@@ -106,6 +99,7 @@ public class FXMLInicioController implements Initializable {
             Utilidades.mostrarAlerta("Error de conexion",
             "Lo sentimos por el momento no hay conexion con la base de datos, intentelo mas tarde",
             Alert.AlertType.ERROR);
+            //Logger.getLogger(FXMLInicioController.class.getName()).log(Level.SEVERE, null, sQLException);
         }
     }
     private void abrirPantallaPrincipal(int rol){
@@ -118,28 +112,16 @@ public class FXMLInicioController implements Initializable {
             Scene scene = new Scene(escenario);
             ventanaPrincipal.setScene(scene);
             ventanaPrincipal.setTitle("Sistema Tickets");
+            
             ventanaPrincipal.initModality(Modality.APPLICATION_MODAL);
             ventanaPrincipal.show();
             
             Stage stageActual = (Stage) txtUsuario.getScene().getWindow();
+            stageActual.getIcons().add(new Image("sistematickets/img/usuarios.png"));
             Stage stage = (Stage) stageActual.getScene().getWindow();
             stage.close();
             
-            /*Stage menu = new Stage();
-            FXMLLoader loader = new FXMLLoader();
-            Parent root = loader.load(getClass().getResource("/uv/fei/gui/interfaces/Menu.fxml"));
-            MenuController menuController = (MenuController) loader.getController();
-            menuController.recibirParametrosTesista(tesista);
-            Scene scene = new Scene(root);
-            menu.setScene(scene);
-            menu.setTitle("Menu de tesista");
-            menu.alwaysOnTopProperty();
-            menu.getIcons().add(new Image("/uv/fei/Img/book.png"));
-            
-            menu.show();*/
 
-
-            
         } catch (IOException iOException) {
             Utilidades.mostrarAlerta("Error de sistema 6", "Hubo un error "
             + "al cargar la información. Por favor, inténtelo más tarde",Alert.AlertType.ERROR);

@@ -13,6 +13,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import sistematickets.modelo.pojo.Empleado;
 import sistematickets.modelo.pojo.Reporte;
 import sistematickets.modelo.pojo.Solucion;
 

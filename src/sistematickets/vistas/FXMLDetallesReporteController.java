@@ -18,6 +18,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sistematickets.modelo.dao.SolucionDAO;
+import sistematickets.modelo.pojo.Empleado;
 import sistematickets.modelo.pojo.Reporte;
 import sistematickets.modelo.pojo.Solucion;
 import sistematickets.util.Utilidades;
@@ -47,6 +48,8 @@ public class FXMLDetallesReporteController implements Initializable {
     private TextField tfTipoReporte;
     
     private Reporte reporteDetalle;
+    
+    private Empleado empleadoNombre;
     @FXML
     private TextField tfEncargado;
     /**
@@ -71,11 +74,11 @@ public class FXMLDetallesReporteController implements Initializable {
         tfModulo.setText(reporteDetalle.getModulo().toString());
         tfTipoReporte.setText(reporteDetalle.getTipoReporte().toString());
         
-        
-        //tfEncargado.setText(reporteDetalle.)
+                
         try {
             taSolucion.setText(obtenerSolucionReporte().getDescripcion());
             tfFechaSolucion.setText(obtenerSolucionReporte().getFechaSolucion());
+            //tfEncargado.setText(obtenerNombreEmpleado().getNombre());
         } catch (SQLException sQLException) {
             Utilidades.mostrarAlerta ("Error de conexión",
             "Por el momento no hay conexión con la Base de Datos", Alert.AlertType.ERROR);
@@ -87,6 +90,8 @@ public class FXMLDetallesReporteController implements Initializable {
         Solucion solucionReporte = solucionReporteDAO.obtenerSolucionPorIdReporte(reporteDetalle);
         return solucionReporte;
     }
+    
+    
     
     private void configurarComponentes(){
         tfEstado.setEditable(false);

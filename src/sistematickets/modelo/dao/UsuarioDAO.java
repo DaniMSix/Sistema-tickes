@@ -32,7 +32,7 @@ import sistematickets.util.Constantes;
             if(resultadoConsulta.next()){
                 usuarioAIdentificar.setIdUsuario(resultadoConsulta.getInt("IdUsuario"));
                 usuarioAIdentificar.setNombreUsuario(resultadoConsulta.getString("usuario"));
-                usuarioAIdentificar.setRol(resultadoConsulta.getInt("IdRol"));
+                usuarioAIdentificar.setRol(resultadoConsulta.getInt("IdEmpleado"));
                 usuarioAIdentificar.setCodigoRespuesta(Constantes.CODIGO_OPERACION_CORRECTA);
                 
             }else{

@@ -37,22 +37,23 @@ public class SolucionDAO {
         }
         return solucionReporte;
     }
-    
-    public Empleado obtenerNombreEncargadoPorId(Solucion solucion)throws SQLException{
-        Empleado empleadoNombre = new Empleado();
+    /*
+    public Solucion obtenerNombreEncargadoPorId(Empleado empleado)throws SQLException{
+        Solucion nombreEmpleado = new Solucion();
         DataBaseConnection dataBase = new DataBaseConnection();
-        String consulta = "SELECT nombre from empleados, solucion where solucion.IdEmpleado = ?;";
+        String consulta = "SELECT nombre from empleados, solucion where empleados.IdEmpleado = ?;";
         try(Connection conexion = dataBase.getConexion()){
             PreparedStatement sentencia = conexion.prepareStatement(consulta);
-            
+            sentencia.setInt(1, empleado.getIdEmpleado());
             ResultSet resultadoConsulta = sentencia.executeQuery();
             if (!resultadoConsulta.next()) {
             }else{
-                
+                nombreEmpleado.setIdEmpleado(resultadoConsulta.getString()));
             }
         }finally{
             dataBase.desconectar();
         }
-        return empleadoNombre;
+        return nombreEmpleado;
     }
+*/
 }

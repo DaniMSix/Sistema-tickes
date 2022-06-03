@@ -58,7 +58,7 @@ public class FXMLPrincipalController implements Initializable {
             Scene escenarioVentana = new Scene(root);
             Stage ventana = new Stage();
             ventana.setResizable(false);
-            //ventana.getIcons().add(new Image("sistematickets/img/directorio.png"));
+            ventana.getIcons().add(new Image("sistematickets/img/usuarios.png"));
             ventana.setScene(escenarioVentana);
             ventana.setTitle(titulo);
             ventana.initModality(Modality.APPLICATION_MODAL);
