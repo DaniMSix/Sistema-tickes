@@ -123,7 +123,7 @@ public class FXMLInicioController implements Initializable {
             
 
         } catch (IOException iOException) {
-            Utilidades.mostrarAlerta("Error de sistema 6", "Hubo un error "
+            Utilidades.mostrarAlerta("Error de sistema ", "Hubo un error "
             + "al cargar la información. Por favor, inténtelo más tarde",Alert.AlertType.ERROR);
             //Logger.getLogger(FXMLInicioController.class.getName()).log(Level.SEVERE, null, iOException);
         }

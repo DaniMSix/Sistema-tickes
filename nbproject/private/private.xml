@@ -3,10 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/DMS19/Desktop/Github/SistemaTickets/src/sistematickets/modelo/dao/UsuarioDAO.java</file>
             <file>file:/C:/Users/DMS19/Desktop/Github/SistemaTickets/src/sistematickets/vistas/FXMLInicioController.java</file>
-            <file>file:/C:/Users/DMS19/Desktop/Github/SistemaTickets/src/sistematickets/vistas/FXMLPrincipalController.java</file>
-            <file>file:/C:/Users/DMS19/Desktop/Github/SistemaTickets/test/sistematickets/modelo/dao/UsuarioDAOTest.java</file>
-            <file>file:/C:/Users/DMS19/Desktop/Github/SistemaTickets/src/sistematickets/vistas/FXMLPrincipal.fxml</file>
         </group>
     </open-files>
 </project-private>

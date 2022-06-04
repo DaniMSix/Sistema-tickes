@@ -19,15 +19,15 @@ import sistematickets.util.Constantes;
     public Usuario iniciarSesion(String nombreUsuario, String contrasenia) throws SQLException{
         Usuario usuarioAIdentificar = new Usuario();
         DataBaseConnection dataBase = new DataBaseConnection();
-        //SHA_512 encriptador = new SHA_512();
+        SHA_512 encriptador = new SHA_512();
         String consulta = "SELECT U.IdUsuario, U.usuario, CU.IdEmpleado FROM usuarios U inner "
                         + "join empleadosroles CU ON CU.IdUsuario  = U.IdUsuario "
                         + "WHERE usuario = ? AND contrasena = ?;";
         try (Connection conexion = dataBase.getConexion()){
             PreparedStatement sentencia = conexion.prepareStatement(consulta);
             sentencia.setString(1, nombreUsuario); 
-            sentencia.setString(2, contrasenia);
-            // sentencia.setString(2, encriptador.getSHA512(contrasenia));
+            //sentencia.setString(2, contrasenia);
+            sentencia.setString(2, encriptador.getSHA512(contrasenia));
             ResultSet resultadoConsulta = sentencia.executeQuery();
             if(resultadoConsulta.next()){
                 usuarioAIdentificar.setIdUsuario(resultadoConsulta.getInt("IdUsuario"));
@@ -47,15 +47,15 @@ import sistematickets.util.Constantes;
     public Usuario iniciarSesionCliente(String nombreUsuario, String contrasenia) throws SQLException{
         Usuario usuarioAIdentificar = new Usuario();
         DataBaseConnection dataBase = new DataBaseConnection();
-        //SHA_512 encriptador = new SHA_512();
+        SHA_512 encriptador = new SHA_512();
         String consulta = "SELECT U.IdUsuario, U.usuario, CU.IdRol FROM usuarios U " +
                           "inner join clientesusuarios CU ON CU.IdUsuario = U.IdUsuario " +
                           "WHERE usuario = ? AND contrasena = ?;";
         try (Connection conexion = dataBase.getConexion()){
             PreparedStatement sentencia = conexion.prepareStatement(consulta);
             sentencia.setString(1, nombreUsuario); 
-            sentencia.setString(2, contrasenia);
-            // sentencia.setString(2, encriptador.getSHA512(contrasenia));
+            //sentencia.setString(2, contrasenia);
+            sentencia.setString(2, encriptador.getSHA512(contrasenia));
             ResultSet resultadoConsulta = sentencia.executeQuery();
             if(resultadoConsulta.next()){
                 usuarioAIdentificar.setIdUsuario(resultadoConsulta.getInt("IdUsuario"));
